@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Image to PDF - All-in-One Converter{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-images me-2"></i>Image to PDF Converter
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <p class="lead">Convert images to PDF documents</p>
+                        <small class="text-muted">Transform your images into professional PDF files</small>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">Choose Image File</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".jpg,.jpeg,.png,.gif" required>
+                            <div class="form-text">Supported formats: JPG, JPEG, PNG, GIF (Max size: 10MB)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Convert to PDF
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Features:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Maintains image quality</li>
+                                <li>Automatic page sizing</li>
+                                <li>No watermarks</li>
+                                <li>Instant download</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

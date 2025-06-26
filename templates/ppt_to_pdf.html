@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}PPT to PDF - All-in-One Converter{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-file-powerpoint me-2"></i>PowerPoint to PDF Converter
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <p class="lead">Convert PowerPoint presentations to PDF format</p>
+                        <small class="text-muted">Each slide will become a page in the PDF document</small>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">Choose PowerPoint File</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".ppt,.pptx" required>
+                            <div class="form-text">Supported formats: PPT, PPTX (Max size: 20MB)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Convert to PDF
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Conversion Details:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Slides are converted to individual PDF pages</li>
+                                <li>Maintains slide layout and formatting</li>
+                                <li>Preserves images and graphics</li>
+                                <li>Perfect for sharing presentations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

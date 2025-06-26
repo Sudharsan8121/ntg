@@ -1,0 +1,278 @@
+:root {
+       /* Soft blue-violet */
+    --secondary-color: #8f94fb; /* Light periwinkle */
+    --success-color: #00c9a7;   /* Teal green */
+    --info-color: #17bebb;      /* Aqua */
+    --warning-color: #ffc75f;   /* Soft orange-yellow */
+    --danger-color: #ff6f61;    /* Coral red */
+    --light-color: #f5f7fa;     /* Light grayish */
+    --dark-color: #2e2e3a;      /* Charcoal */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.main-content {
+    min-height: calc(100vh - 200px);
+    padding-top: 76px;
+}
+
+/* Hero Section */
+.hero-section {
+    
+    background: #4e54c8;;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Feature Icons */
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Hover Effects */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* File Upload */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(78, 84, 200, 0.25);
+}
+
+/* Dropzone */
+.dropzone-form {
+    border: 2px dashed #ced4da;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    background-color: white;
+    transition: all 0.3s ease;
+    color: var(--dark-color);
+}
+
+.dropzone-form:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(78, 84, 200, 0.05);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+/* Navigation */
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background: var(--dark-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+/* Spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Alerts */
+.alert {
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    color: white;
+}
+
+.alert-success {
+    background-color: var(--success-color);
+}
+
+.alert-danger {
+    background-color: var(--danger-color);
+}
+
+.alert-warning {
+    background-color: var(--warning-color);
+}
+
+/* Tables */
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(78, 84, 200, 0.05);
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(78, 84, 200, 0.15);
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Validations */
+.is-valid {
+    border-color: var(--success-color);
+}
+
+.is-invalid {
+    border-color: var(--danger-color);
+}
+
+/* Progress Bar */
+.progress {
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b40a4;
+}

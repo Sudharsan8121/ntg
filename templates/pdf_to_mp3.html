@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}PDF to MP3 - All-in-One Converter{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-volume-up me-2"></i>PDF to MP3 Converter
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <p class="lead">Convert PDF documents to audio files (MP3)</p>
+                        <small class="text-muted">The text from your PDF will be converted to speech</small>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">Choose PDF File</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".pdf" required>
+                            <div class="form-text">Supported format: PDF (Max size: 10MB)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Convert to MP3
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> The conversion process may take a few moments depending on the size of your PDF file.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

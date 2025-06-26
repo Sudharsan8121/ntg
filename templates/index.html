@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Home - All-in-One Converter{% endblock %}
+<link rel="stylesheet" href="bootstrap.min.css">
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container" >
+        <div class="row align-items-center min-vh-100" >
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4" >All-in-One File Converter</h1>
+                <p class="lead mb-4">
+                    Convert your files quickly and easily with our comprehensive suite of conversion tools. 
+                    Support for PDF, Word, Images, PowerPoint, and more!
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    {% if session.loggedin %}
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Get Started
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-exchange-alt display-1 text-white-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Conversion Tools</h2>
+            <p class="lead text-muted">Choose from our wide range of file conversion options</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- PDF to Text -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-primary text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h5 class="card-title">PDF to Text</h5>
+                        <p class="card-text">Extract text content from PDF files with high accuracy and formatting preservation.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('pdf_to_text') }}" class="btn btn-primary">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-primary">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PDF to MP3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-success text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h5 class="card-title">PDF to MP3</h5>
+                        <p class="card-text">Convert PDF documents to audio files for listening on the go.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('pdf_to_mp3') }}" class="btn btn-success">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-success">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Word to PDF -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-info text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h5 class="card-title">Word to PDF</h5>
+                        <p class="card-text">Convert Word documents (DOC, DOCX) to PDF format while maintaining formatting.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('word_to_pdf') }}" class="btn btn-info">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-info">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image to Text -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-warning text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h5 class="card-title">Image to Text</h5>
+                        <p class="card-text">Extract text from images using advanced OCR technology.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('image_to_text') }}" class="btn btn-warning">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-warning">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image to PDF -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-danger text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h5 class="card-title">Image to PDF</h5>
+                        <p class="card-text">Convert images (JPG, PNG, GIF) to PDF documents easily.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('image_to_pdf') }}" class="btn btn-danger">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-danger">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PPT to PDF -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-secondary text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <h5 class="card-title">PPT to PDF</h5>
+                        <p class="card-text">Convert PowerPoint presentations to PDF format for easy sharing.</p>
+                        {% if session.loggedin %}
+                            <a href="{{ url_for('ppt_to_pdf') }}" class="btn btn-secondary">Convert Now</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary">Login to Convert</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Why Choose Our Converter?</h2>
+            <p class="lead text-muted">Fast, secure, and reliable file conversion</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-shield-alt text-primary" style="font-size: 3rem;"></i>
+                </div>
+                <h5>Secure & Private</h5>
+                <p class="text-muted">Your files are processed securely and deleted after conversion.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-bolt text-warning" style="font-size: 3rem;"></i>
+                </div>
+                <h5>Fast Processing</h5>
+                <p class="text-muted">Quick conversion times with high-quality output.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-mobile-alt text-success" style="font-size: 3rem;"></i>
+                </div>
+                <h5>Mobile Friendly</h5>
+                <p class="text-muted">Works perfectly on all devices - desktop, tablet, and mobile.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

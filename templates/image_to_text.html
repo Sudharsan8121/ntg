@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Image to Text - All-in-One Converter{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-image me-2"></i>Image to Text Converter (OCR)
+                    </h4>
+                </div>
+                <div class="card-body">
+                    {% if not success %}
+                    <div class="text-center mb-4">
+                        <p class="lead">Extract text from images using OCR technology</p>
+                        <small class="text-muted">Perfect for converting scanned documents, screenshots, and photos with text</small>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">Choose Image File</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".jpg,.jpeg,.png,.gif" required>
+                            <div class="form-text">Supported formats: JPG, JPEG, PNG, GIF (Max size: 10MB)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-warning btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Extract Text
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle me-2"></i>Text extracted successfully from image!
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="extractedText" class="form-label">Extracted Text:</label>
+                        <textarea class="form-control" id="extractedText" rows="15" readonly>{{ text }}</textarea>
+                    </div>
+                    
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button onclick="copyText()" class="btn btn-success">
+                            <i class="fas fa-copy me-2"></i>Copy Text
+                        </button>
+                        <button onclick="speakText()" class="btn btn-info">
+                            <i class="fas fa-volume-up me-2"></i>Read Aloud
+                        </button>
+                        <a href="{{ url_for('image_to_text') }}" class="btn btn-outline-warning">
+                            <i class="fas fa-plus me-2"></i>Convert Another
+                        </a>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            <strong>Tips for better results:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Use high-resolution images</li>
+                                <li>Ensure text is clearly visible</li>
+                                <li>Avoid blurry or distorted images</li>
+                                <li>Works best with printed text</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyText() {
+    const textArea = document.getElementById('extractedText');
+    textArea.select();
+    document.execCommand('copy');
+    alert('Text copied to clipboard!');
+}
+
+function speakText() {
+    const text = document.getElementById('extractedText').value;
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    } else {
+        alert('Text-to-speech not supported in your browser.');
+    }
+}
+</script>
+{% endblock %}

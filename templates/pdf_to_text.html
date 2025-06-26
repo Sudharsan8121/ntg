@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}PDF to Text - All-in-One Converter{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-file-pdf me-2"></i>PDF to Text Converter
+                    </h4>
+                </div>
+                <div class="card-body">
+                    {% if not success %}
+                    <div class="text-center mb-4">
+                        <p class="lead">Upload a PDF file to extract its text content</p>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data" class="dropzone-form">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">Choose PDF File</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".pdf" required>
+                            <div class="form-text">Supported format: PDF (Max size: 10MB)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Convert
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle me-2"></i>Text extracted successfully!
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="extractedText" class="form-label">Extracted Text:</label>
+                        <textarea class="form-control" id="extractedText" rows="15" readonly>{{ text }}</textarea>
+                    </div>
+                    
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button onclick="copyText()" class="btn btn-success">
+                            <i class="fas fa-copy me-2"></i>Copy Text
+                        </button>
+                        <button onclick="speakText()" class="btn btn-info">
+                            <i class="fas fa-volume-up me-2"></i>Read Aloud
+                        </button>
+                        <a href="{{ url_for('pdf_to_text') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-plus me-2"></i>Convert Another
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyText() {
+    const textArea = document.getElementById('extractedText');
+    textArea.select();
+    document.execCommand('copy');
+    alert('Text copied to clipboard!');
+}
+
+function speakText() {
+    const text = document.getElementById('extractedText').value;
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    } else {
+        alert('Text-to-speech not supported in your browser.');
+    }
+}
+</script>
+{% endblock %}
