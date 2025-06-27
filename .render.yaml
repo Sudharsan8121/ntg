@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: all-in-one-converter-v2
+    env: python
+    buildCommand: |
+      pyenv install 3.10.13
+      pyenv global 3.10.13
+      pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
