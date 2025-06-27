@@ -8,3 +8,9 @@ gTTS==2.4.0
 reportlab==4.0.4
 Werkzeug==2.3.7
 setuptools==68.2.2
+
+# Required for production on Render
+gunicorn==21.2.0
+
+# Required if you use CORS in frontend/backend
+flask-cors==4.0.0
