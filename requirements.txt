@@ -2,8 +2,9 @@ Flask==2.3.3
 Flask-MySQLdb==1.0.1
 PyPDF2==3.0.1
 python-docx==0.8.11
-Pillow==10.0.1
+Pillow>=10.1.0
 pytesseract==0.3.10
 gTTS==2.4.0
 reportlab==4.0.4
 Werkzeug==2.3.7
+setuptools==68.2.2
