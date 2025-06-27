@@ -14,7 +14,9 @@ from fpdf import FPDF
 import os
 import pythoncom
 import comtypes.client
+import pymysql
 
+pymysql.install_as_MySQLdb()
 def convert_pptx_with_powerpoint(input_path, output_path):
 
     pythoncom.CoInitialize()
